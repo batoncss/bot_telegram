@@ -1,0 +1,17 @@
+from requests import get
+
+
+def long_polling(token, update_id):
+    while True:
+        result = get(f'https://api.telegram.org/bot{token}/getUpdates?timeout=2&offset={update_id}').json()['result']
+        if result != []:
+            update_id = result[0]['update_id'] + 1
+            return result, update_id
+
+
+def answer(token, chat_id, text):
+    if text != 0:
+        answer = get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text={text}').json()['result']
+    else:
+        answer = None
+    return answer

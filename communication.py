@@ -4,10 +4,11 @@ from requests import get
 def news():
     page = get('https://vc.ru')
     data = page.text
-    find_start = data.find('<div class="l-inline">')
-    find_finish = data.find('class="n', find_start)
+    find_start = data.find('<div class="content-header__info">')
+    url_start = data.find('https://vc.ru/', find_start)
+    url_finish = data.find('"', url_start)
     number = ""
-    for i in range(find_start + 40, find_finish - 13):
+    for i in range(url_start, url_finish):
         number += data[i]
     return number
 

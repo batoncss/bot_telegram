@@ -11,7 +11,7 @@ def long_polling(token, update_id):
 
 def answer(token, chat_id, text):
     if text != 0:
-        answer = get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text={text}').json()['result']
+        answer = get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text={text}').json()
     else:
         answer = None
     return answer

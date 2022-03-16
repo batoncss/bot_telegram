@@ -1,28 +1,23 @@
-from requests import get
 from weather import text_for_weather
 from money import text_for_money
-
-def news():
-    page = get('https://vc.ru/popular')
-    data = page.text
-    find_start = data.find('Статьи редакции')
-    url_start = data.find('https://vc.ru/', find_start)
-    url_finish = data.find('"', url_start)
-    number = ""
-    for i in range(url_start, url_finish):
-        number += data[i]
-    return number
+from joke import text_for_joke
+from memes import picture_with_memes
+from news import text_for_news
 
 
 def text_for_answer(text):
     if text == '/news':
-        text = news()
+        text = text_for_news()
     elif text == 'кек':
         text = 'чебурек'
     elif text == '/weather':
         text = text_for_weather()
     elif text == '/money':
         text = text_for_money()
+    elif text == '/joke':
+        text = text_for_joke()
+    elif text == '/memes':
+        text = picture_with_memes()
     else:
         text = 0
     return text

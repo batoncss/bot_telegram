@@ -1,8 +1,11 @@
-from requests import get
+from requests import get, post
 from random import randint
 
+token = '5200346527:AAGUHn9YPoD6eOuEVp1esWtqdD1snJa9exc'
+chat_id = 1469994194
 
-def picture_with_memes():
+
+def url_with_memes():
     data = get('https://topmemas.top').text
     memes = []
     false_start = 0
@@ -16,3 +19,5 @@ def picture_with_memes():
         memes.append(picture)
         false_start = finish
     return f'https://topmemas.top/img/img/{memes[randint(0, 9)]}.jpg'
+
+#

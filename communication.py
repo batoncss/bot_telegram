@@ -1,7 +1,7 @@
 from weather import text_for_weather
 from money import text_for_money
 from joke import text_for_joke
-from memes import picture_with_memes
+from memes import url_with_memes
 from news import text_for_news
 
 
@@ -17,7 +17,7 @@ def text_for_answer(text):
     elif text == '/joke':
         text = text_for_joke()
     elif text == '/memes':
-        text = picture_with_memes()
+        text = url_with_memes()
     else:
         text = 0
     return text

@@ -11,7 +11,9 @@ def long_polling(token, update_id):
 
 def answer(token, chat_id, text):
     if text != 0:
-        answer = get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text={text}').json()
+        if text[:16] == "https://topmemas":  # если в тексте ссылка на картинку
+            return get(f'https://api.telegram.org/bot{token}/sendPhoto?chat_id={chat_id}&photo={text}').text
+        else:
+            return get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text={text}').json()
     else:
-        answer = None
-    return answer
+        return None
